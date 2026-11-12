@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Rippl</title>
+  <meta name="description" content="Rippl pricing: Free, Monthly, or Pay-per-view plans for AI-powered short-form posting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pricing.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="logo">Rippl</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html" class="active">Pricing</a>
+    </nav>
+  </header>
+
+  <!-- GTA 6 launch week promo banner (hidden automatically after Nov 19) -->
+  <div class="promo" id="promo">
+    <strong>GTA 6 launch week deal:</strong> Pay-per-view is just
+    <strong>$0.50 / 1,000 views</strong> (save 25¢) until GTA 6 drops Nov 19.
+    <span class="countdown" id="countdown"></span>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Simple pricing. Post everywhere.</h1>
+      <p>Upload once, Rippl posts to every app. Pick the plan that fits how you grow.</p>
+    </section>
+
+    <section class="plans">
+      <!-- 1. FREE -->
+      <article class="card">
+        <h2>Free</h2>
+        <p class="tagline">Try Rippl at no cost.</p>
+        <div class="price"><span class="amount">$0</span><span class="per">/ forever</span></div>
+        <ul>
+          <li>Upload once, post to all connected apps</li>
+          <li>Rippl clips with watermark</li>
+          <li>Basic analytics</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Start free</a>
+      </article>
+
+      <!-- 2. MONTHLY -->
+      <article class="card featured">
+        <span class="badge">Most popular</span>
+        <h2>Monthly</h2>
+
+        <div class="toggle" role="tablist" aria-label="Monthly plan">
+          <button class="toggle-btn active" data-plan="basic" role="tab" aria-selected="true">Basic</button>
+          <button class="toggle-btn" data-plan="managed" role="tab" aria-selected="false">Management</button>
+        </div>
+
+        <div class="plan-panel" data-panel="basic">
+          <p class="tagline">Unlimited clips for creators.</p>
+          <div class="price"><span class="amount">$30</span><span class="per">/ month</span></div>
+          <ul>
+            <li>No watermark</li>
+            <li>Rippl clips for all your content</li>
+            <li>Cross-app analytics</li>
+            <li>Copyright audio swap</li>
+          </ul>
+        </div>
+
+        <div class="plan-panel" data-panel="managed" hidden>
+          <p class="tagline">We run your socials for you.</p>
+          <div class="price"><span class="amount">$500</span><span class="per">/ month</span></div>
+          <ul>
+            <li>Everything in Basic</li>
+            <li>Full social media management by the Rippl team</li>
+            <li>Content planning and posting</li>
+            <li>Growth reporting</li>
+          </ul>
+        </div>
+
+        <a href="#" class="btn btn-primary">Get started</a>
+      </article>
+
+      <!-- 3. PAY PER VIEW -->
+      <article class="card">
+        <span class="badge badge-promo" id="ppv-badge">GTA 6 week: 25¢ off</span>
+        <h2>Pay per view</h2>
+        <p class="tagline">Only pay when your clips perform.</p>
+        <div class="price">
+          <span class="old" id="ppv-old">$0.75</span>
+          <span class="amount" id="ppv-price">$0.50</span>
+          <span class="per">/ 1,000 views</span>
+        </div>
+        <p class="note" id="ppv-note">Promo price until Nov 19. Then $0.75 / 1,000 views.</p>
+        <ul>
+          <li>No watermark</li>
+          <li>Billed on views earned through Rippl clips</li>
+          <li>No monthly fee</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Start earning</a>
+      </article>
+    </section>
+
+    <p class="fine">All prices in USD. Cancel monthly plans anytime.</p>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Rippl Inc.</footer>
+
+  <script src="pricing.js"></script>
+</body>
+</html>
