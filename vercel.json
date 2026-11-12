@@ -1,3 +1,69 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/app",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/"
+    },
+    {
+      "source": "/app/",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/"
+    },
+    {
+      "source": "/platforms",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/platforms"
+    },
+    {
+      "source": "/users",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/users"
+    },
+    {
+      "source": "/static/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/static/:path*"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/auth/:path*"
+    },
+    {
+      "source": "/batches/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/batches/:path*"
+    },
+    {
+      "source": "/billing/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/billing/:path*"
+    },
+    {
+      "source": "/callback/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/callback/:path*"
+    },
+    {
+      "source": "/media/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/media/:path*"
+    },
+    {
+      "source": "/runs/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/runs/:path*"
+    },
+    {
+      "source": "/scheduler/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/scheduler/:path*"
+    },
+    {
+      "source": "/stream-clips/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/stream-clips/:path*"
+    },
+    {
+      "source": "/streams/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/streams/:path*"
+    },
+    {
+      "source": "/users/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/users/:path*"
+    },
+    {
+      "source": "/legal/:path*",
+      "destination": "https://steadily-excusable-dig.ngrok-free.dev/legal/:path*"
+    }
+  ]
 }
