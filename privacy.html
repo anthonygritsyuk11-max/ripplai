@@ -25,18 +25,17 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated 8 November 2026</p>
+<p class="updated">Last updated 16 November 2026</p>
 
-<p>Rippl is a tool that takes one video, replaces copyrighted audio with a
-licensed track, reformats it for each destination, and publishes it to the
-social platforms you connect. This policy describes exactly what data that
-involves, where it goes, and what you can do about it.</p>
+<p>Rippl is a tool that publishes one video to every social platform you
+connect, and turns long livestreams into short clips. This policy describes
+exactly what data that involves, where it goes, how long we keep it, and what
+you can do about it.</p>
 
 <div class="note">
-  <p><strong>Rippl is currently a limited beta</strong> operated directly by its
-  founders, not a general-availability product. If you are using it, you were
-  invited personally. The practices below describe the service as it actually
-  works today, not as we intend it to work at scale.</p>
+  <p><strong>Rippl is an early-stage service</strong> run directly by its
+  founders. The practices below describe the service as it actually works
+  today, not as we intend it to work at scale.</p>
 </div>
 
 <h2>Who we are</h2>
@@ -75,23 +74,46 @@ We aim to respond within 7 days.</p>
     and link each platform returns</td>
     <td>So you can see what happened to each post and we can diagnose failures.</td>
   </tr>
+  <tr>
+    <td><strong>Streams you ask us to clip</strong> — the stream link, its title,
+    its audio, its public chat replay where the platform keeps one, a transcript
+    of what is said, and the short clips we make</td>
+    <td>To find the best moments and render them as clips for you.</td>
+  </tr>
+  <tr>
+    <td><strong>Credits and usage</strong> — top-up amounts, the Stripe reference
+    for each payment, and the view counts we read for clips you post</td>
+    <td>To keep your credit balance and charge for views, as described on the
+    pricing page.</td>
+  </tr>
+  <tr>
+    <td><strong>A session cookie</strong> (<code>rippl_session</code>), a random
+    value that keeps your browser signed in to your Rippl account</td>
+    <td>Rippl has no passwords: this cookie is what tells us the browser is you.</td>
+  </tr>
 </table>
 
 <h3>What we do not collect</h3>
 <ul>
   <li>No analytics, tracking pixels or advertising identifiers.</li>
-  <li>No cookies beyond what is strictly required for a signed-in session.</li>
+  <li>No cookies other than the session cookie above.</li>
   <li>No contact lists, follower data, direct messages, or the content of your
       social accounts beyond the posts Rippl itself creates.</li>
-  <li>No payment information — Rippl does not currently take payments.</li>
+  <li>No card details. Payments are handled entirely by Stripe; Rippl never sees
+      or stores your card number.</li>
 </ul>
 
 <h2>How your video is processed</h2>
-<p>Audio separation and analysis run <strong>on our own servers</strong> using
-open-source models (Demucs for source separation, DeepFilterNet for noise
-reduction). Your video is <strong>not</strong> sent to a third-party AI service
-for this, and it is <strong>not</strong> used to train any model — ours or
-anyone else's.</p>
+<p>Audio separation and analysis for uploads run <strong>on our own servers</strong>
+using open-source models (Demucs for source separation, DeepFilterNet for noise
+reduction).</p>
+<p>When you clip a stream, its speech is transcribed <strong>on our own servers</strong>
+(Whisper). To choose the clips and write their titles, captions and on-screen
+text, we send the <strong>transcript text</strong>, short excerpts of the stream's
+public chat, and the stream's title to <strong>Anthropic's Claude API</strong>.
+No video or audio is sent. Anthropic processes this under its commercial API
+terms and does not use it to train its models. Neither do we: your videos are
+not used to train any model.</p>
 
 <h2>Who your data is shared with</h2>
 <p>We do not sell your data, and we do not share it for advertising. It reaches
@@ -104,11 +126,19 @@ third parties only where that is the point of the feature:</p>
   <tr><td>TikTok</td><td>Your rendered video and caption</td>
       <td>When you publish to TikTok</td></tr>
   <tr><td>Instagram (Meta)</td><td>A link to your rendered video, and the caption.
-      Meta downloads the file from that link.</td><td>When you publish to Instagram</td></tr>
+      Meta downloads the file from that link. The video is placed at a public web
+      address on GitHub Pages for this, so anyone who has that address can view
+      it.</td><td>When you publish to Instagram</td></tr>
+  <tr><td>Anthropic</td><td>Stream transcripts, chat excerpts and titles (no video
+      or audio)</td><td>When you clip a stream</td></tr>
+  <tr><td>Stripe</td><td>Your payment, and what you enter on Stripe's checkout page</td>
+      <td>When you buy credits</td></tr>
+  <tr><td>YouTube, Twitch or Kick</td><td>A request for the stream you linked (we
+      download it from there)</td><td>When you clip a stream</td></tr>
   <tr><td>RapidAPI</td><td>The public link you asked Rippl to fetch</td>
       <td>Only when you supply a TikTok or Instagram link to import</td></tr>
-  <tr><td>Cloudflare</td><td>Network traffic to and from our server</td>
-      <td>Always, as our network provider</td></tr>
+  <tr><td>Vercel and ngrok</td><td>Network traffic between your browser and our
+      server</td><td>Always, as our hosting and network providers</td></tr>
 </table>
 
 <p>Each platform handles the data it receives under its own privacy policy. Your
@@ -122,23 +152,37 @@ credentials are stored so that scheduled publishing can run without you present;
 access to those servers is limited to the founders.</p>
 
 <div class="note">
-  <p><strong>Being straight with you about beta-stage security.</strong> Rippl is
-  an early build. Credentials are not yet encrypted at rest, and the service does
-  not yet have a hardened multi-user authentication layer. Both are being
-  addressed before Rippl is opened beyond invited users. Until then, please
-  connect only accounts you are comfortable using in a beta, and revoke access
-  (see below) if you stop using the service.</p>
+  <p><strong>Being straight with you about early-stage security.</strong> Each
+  browser has its own Rippl account, and only that browser's session cookie can
+  reach its data. There are no passwords yet, so clearing your cookies or
+  switching browsers starts a new, empty account. Platform credentials are not
+  yet encrypted at rest. Please connect only accounts you are comfortable using
+  with an early-stage service, and revoke access (see below) if you stop using it.</p>
 </div>
 
 <h2>How long we keep it</h2>
-<ul>
-  <li><strong>Uploaded and rendered videos, and intermediate audio files</strong>
-      are retained while your account is active so you can see your history.</li>
-  <li><strong>Access credentials</strong> are kept until you disconnect the
-      platform or delete your account.</li>
-  <li><strong>Processing metadata</strong> is kept for your post history.</li>
-</ul>
-<p>Ask us to delete any of it at any time and we will, within 30 days.</p>
+<table>
+  <tr><th>Data</th><th>How long</th></tr>
+  <tr><td><strong>A stream's audio</strong></td>
+      <td>Deleted as soon as the clips from that stream are finished.</td></tr>
+  <tr><td><strong>Stream video</strong> (the short sections downloaded to make each clip)</td>
+      <td>Deleted as soon as that clip is rendered.</td></tr>
+  <tr><td><strong>Finished clips</strong></td>
+      <td>7 days, so you can post or download them; then deleted automatically.
+      Clips you discard are deleted after 1 day.</td></tr>
+  <tr><td><strong>Stream transcripts, chat replay and stream details</strong></td>
+      <td>Until you delete your data. They make clipping the same stream again much faster.</td></tr>
+  <tr><td><strong>Uploaded and rendered videos, and intermediate audio files</strong></td>
+      <td>While your account is active, so you can see your post history.</td></tr>
+  <tr><td><strong>Access credentials</strong></td>
+      <td>Until you disconnect the platform or delete your data.</td></tr>
+  <tr><td><strong>Processing metadata and post history</strong></td>
+      <td>Until you delete your data.</td></tr>
+  <tr><td><strong>Payment records</strong> (amounts and Stripe references)</td>
+      <td>As long as tax law requires us to keep financial records (six years in
+      Canada), even if you delete your data. They are no longer linked to your
+      email or name.</td></tr>
+</table>
 
 <h2>Your choices</h2>
 <ul>
@@ -147,8 +191,11 @@ access to those servers is limited to the founders.</p>
       <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google account</a>,
       TikTok settings, or Meta Business settings — that works even if Rippl is
       unreachable.</li>
-  <li><strong>Delete your data.</strong> Email us and we will remove your
-      account, stored credentials, videos and history.</li>
+  <li><strong>Delete your data.</strong> Use <strong>Delete my data</strong> at the
+      bottom of the Rippl app. It immediately removes your clips, uploads, renders,
+      stream history, scheduled posts, stored platform credentials and account,
+      except the payment records described above. Any unused credit balance is
+      lost. You can also email us and we will do it for you within 30 days.</li>
   <li><strong>Get a copy.</strong> Ask and we will send you what we hold.</li>
   <li><strong>Correct it.</strong> Tell us what is wrong and we will fix it.</li>
 </ul>
