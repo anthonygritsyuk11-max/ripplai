@@ -25,7 +25,7 @@
 </header>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated 16 November 2026</p>
+<p class="updated">Last updated 18 November 2026</p>
 
 <p>Rippl is a tool that publishes one video to every social platform you
 connect, and turns long livestreams into short clips. This policy describes
@@ -126,9 +126,8 @@ third parties only where that is the point of the feature:</p>
   <tr><td>TikTok</td><td>Your rendered video and caption</td>
       <td>When you publish to TikTok</td></tr>
   <tr><td>Instagram (Meta)</td><td>A link to your rendered video, and the caption.
-      Meta downloads the file from that link. The video is placed at a public web
-      address on GitHub Pages for this, so anyone who has that address can view
-      it.</td><td>When you publish to Instagram</td></tr>
+      Meta downloads the file from that link. The link is signed, so it cannot be
+      guessed, and it stops working after 6 hours.</td><td>When you publish to Instagram</td></tr>
   <tr><td>Anthropic</td><td>Stream transcripts, chat excerpts and titles (no video
       or audio)</td><td>When you clip a stream</td></tr>
   <tr><td>Stripe</td><td>Your payment, and what you enter on Stripe's checkout page</td>
@@ -148,16 +147,56 @@ and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener"
 
 <h2>Where it is stored, and how it is protected</h2>
 <p>Your data is held in a database and on disk on servers we control. Access
-credentials are stored so that scheduled publishing can run without you present;
-access to those servers is limited to the founders.</p>
+credentials are stored so that scheduled publishing can run without you present.
+We protect it as follows:</p>
+<ul>
+  <li><strong>Encryption in transit.</strong> Every connection between your
+      browser and Rippl, and between Rippl and YouTube, TikTok, Instagram, Stripe
+      and Anthropic, uses HTTPS (TLS).</li>
+  <li><strong>Platform credentials are encrypted at rest.</strong> The OAuth
+      refresh tokens, access tokens and client secrets we store for YouTube,
+      TikTok and Instagram are encrypted in our database with authenticated
+      encryption (Fernet: AES-128 with an HMAC-SHA256 integrity check). The
+      encryption key is kept separately from the database, so a copy of the
+      database or of a backup alone does not reveal any credential. Database
+      backups contain the same encrypted values.</li>
+  <li><strong>Encrypted storage.</strong> The server's disk, where your videos,
+      clips and database are kept, is protected with full-disk encryption
+      (FileVault, AES-XTS).</li>
+  <li><strong>Credentials stay out of logs.</strong> Tokens are removed from our
+      server logs before they are written.</li>
+  <li><strong>Account isolation.</strong> Every request is checked against your
+      session, and Rippl refuses access to any video, clip, post or credential that
+      belongs to another account. Your session cookie is random, sent only over
+      HTTPS (<code>Secure</code>), unreadable to scripts (<code>HttpOnly</code>),
+      and we store only a SHA-256 hash of it, never the cookie itself.</li>
+  <li><strong>Signed, expiring media links.</strong> Links to your rendered files
+      carry a cryptographic signature, and the links handed to Instagram expire
+      after 6 hours.</li>
+  <li><strong>Least privilege.</strong> For YouTube, Rippl asks only for
+      permission to upload videos (<code>youtube.upload</code>). It cannot read,
+      change or delete your existing videos, comments or other channel data. View
+      counts for clips you post are read from YouTube's public data, not with your
+      credentials.</li>
+  <li><strong>Limited access.</strong> Only Rippl's founders can access the
+      servers, and we never sell your data or use it for advertising.</li>
+</ul>
+
+<h3>Google user data</h3>
+<p>Rippl's use and transfer of information received from Google APIs to any
+other app will adhere to the
+<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>,
+including the Limited Use requirements. We use YouTube access only to upload the
+videos you ask Rippl to publish. We do not transfer Google user data to anyone
+except YouTube itself, do not use it for advertising, do not sell it, do not use
+it to train AI models, and do not let any person read it except with your
+permission, for security purposes, or where the law requires.</p>
 
 <div class="note">
   <p><strong>Being straight with you about early-stage security.</strong> Each
-  browser has its own Rippl account, and only that browser's session cookie can
-  reach its data. There are no passwords yet, so clearing your cookies or
-  switching browsers starts a new, empty account. Platform credentials are not
-  yet encrypted at rest. Please connect only accounts you are comfortable using
-  with an early-stage service, and revoke access (see below) if you stop using it.</p>
+  browser has its own Rippl account. There are no passwords yet, so clearing your
+  cookies or switching browsers starts a new, empty
+  account. Please revoke access (see below) if you stop using Rippl.</p>
 </div>
 
 <h2>How long we keep it</h2>
